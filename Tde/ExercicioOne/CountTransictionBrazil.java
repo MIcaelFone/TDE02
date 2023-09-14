@@ -26,7 +26,7 @@ public class CountTransictionBrazil {
         j.setJarByClass(CountTransictionBrazil.class); // Classe que tem o main
         j.setMapperClass(MapForTransitionBrazilCount.class); // Classe do MAP
         j.setReducerClass(ReduceTransitionBrazilCount.class); // Classe do Reduce
-        j.setCombinerClass(ReduceTransitionBrazilCount.class); // Combiner igual ao Reduce!
+        j.setCombinerClass(CombinerForTransitionBrazilCount.class); // Combiner igual ao Reduce!
         j.setMapOutputKeyClass(Text.class); // chave
         j.setMapOutputValueClass(IntWritable.class); // valor
         j.setOutputKeyClass(Text.class); // chave
@@ -46,7 +46,7 @@ public class CountTransictionBrazil {
             }
         }
     }
-        public static class Combiner extends Reducer<Text, IntWritable, Text,
+        public static class CombinerForTransitionBrazilCount extends Reducer<Text, IntWritable, Text,
                 IntWritable>{
             public void reduce(Text key, Iterable<IntWritable> values, Context con)
                     throws IOException, InterruptedException {
@@ -72,14 +72,6 @@ public class CountTransictionBrazil {
         }
 
     }
-
-
-
-
-
-
-
-// loop pra criar tuplas (chave=p, valor=1)
 
 
 
